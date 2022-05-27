@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/users">Users </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/order">Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/category">Category </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/promotion">Promotion </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/products">Product <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5"th:if="${Product != null}">
+            <form th:action="@{/Admin/products/Update/{id}(id=${Product.id})}" method="post">
+                <div class="form-group">
+                    <label >Product name</label>
+                    <input type="text" class="form-control" name="name" th:value="${Product.getName()}"  aria-describedby="emailHelp" placeholder="Product name">
+
+                </div>
+                <div class="form-group">
+                    <label >Image link</label>
+                    <input type="text" class="form-control" name="img" th:value="${Product.getImage()}"  aria-describedby="emailHelp" placeholder="LinkImg">
+
+                </div>
+                <div class="form-group">
+                    <label >Price </label>
+                    <input type="text" class="form-control" name="price" th:value="${Product.getPrice()}" aria-describedby="emailHelp" placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <label >Quatity </label>
+                    <input type="text" class="form-control" name="Quatity" th:value="${Product.getQuantity()}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 1</label>
+                    <input type="text" class="form-control" name="img1" th:value="${Product.getImgs()[0].link}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 2</label>
+                    <input type="text" class="form-control" name="img2" th:value="${Product.getImgs()[1].link}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 3</label>
+                    <input type="text" class="form-control" name="img3" th:value="${Product.getImgs()[2].link}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 4</label>
+                    <input type="text" class="form-control" name="img4" th:value="${Product.getImgs()[3].link}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 5</label>
+                    <input type="text" class="form-control" name="img5" th:value="${Product.getImgs()[4].link}" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+
+                <div class="form-group">
+                    <label >Category</label>
+                    <select class="form-control" name="category"  >
+                        <option th:each="category, stat : ${CategoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" th:text="${Product.getDescription()}" name="description" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-5"th:if="${Product == null}">
+            <form th:action="@{/Admin/products/}" method="post">
+                <div class="form-group">
+                    <label >Product name</label>
+                    <input type="text" class="form-control" name="name"  aria-describedby="emailHelp" placeholder="Product name">
+
+                </div>
+                <div class="form-group">
+                    <label f>Image link</label>
+                    <input type="text" class="form-control" name="img"  aria-describedby="emailHelp" placeholder="LinkImg">
+
+                </div>
+                <div class="form-group">
+                    <label >Price </label>
+                    <input type="text" class="form-control" name="price" aria-describedby="emailHelp" placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <label >Quatity </label>
+                    <input type="number" class="form-control" name="Quatity" aria-describedby="emailHelp" placeholder="quality">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 1</label>
+                    <input type="text" class="form-control" name="img1" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 2</label>
+                    <input type="text" class="form-control" name="img2" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 3</label>
+                    <input type="text" class="form-control" name="img3" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 4</label>
+                    <input type="text" class="form-control" name="img4" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+                <div class="form-group">
+                    <label >Image 5</label>
+                    <input type="text" class="form-control" name="img5" aria-describedby="emailHelp" placeholder="link">
+
+                </div>
+
+                <div class="form-group">
+                    <label >Category</label>
+                    <select class="form-control" name="category">
+                        <option th:each="category, stat : ${CategoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+            <div class="col-sm-5" th:if="${Product == null}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Descreption</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Handle</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product,stat:${ProductList}">
+                        <th scope="row" th:text="${product.id}"></th>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td ><img style="width: 200px;height: auto" th:src="${product.image}"></td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{/Admin/products/delete/{id}(id=${product.id})}">Delete</a>
+                            <a class="btn btn-success" th:href="@{/Admin/products/{id}(id=${product.id})}">Update</a>
+                        </td>
+
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    const setRequired =()=>{
+        let doms = document.querySelectorAll("input");
+        doms.forEach(e=>{
+            e.required=true;
+        })
+    }
+    setRequired();
+</script>
+
+
+</body>
+</html>

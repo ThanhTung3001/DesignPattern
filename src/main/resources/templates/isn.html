@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" th:href="@{/templateIs/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Insurance</title>
+
+</head>
+<body>
+     <header>
+          <ul class="nav">
+              <li><a th:href="@{/home}">Home</a></li>
+              <li><a th:href="@{/user}">Account</a></li>
+              <li><a th:href="@{/cart}">Cart</a></li>
+              <li><a th:href="@{/login}">Login</a></li>
+              <li><a th:href="@{/logout}">Logout</a></li>
+          </ul>
+     </header>
+     <div class="content">
+        <form th:action="@{/insurance/view-form}" method="post">
+            <div class="container">
+              <h1>Insurance</h1>
+              <h2 style="color: red" th:text="${Action}"></h2>
+              <hr>
+          
+              <label for="email"><b>ID Bill Buy</b></label>
+              <input type="text" placeholder="ID of purchase invoice" name="Bill_ID" id="email" required>
+          
+              <label for="psw"><b>ID Product</b></label>
+              <input type="text" placeholder="ID of the product in need of warranty" name="Product_ID" id="psw" required>
+          
+              <label for="psw-repeat"><b>Warranty reason?</b></label>
+              <input type="text" placeholder="Reason?" name="psw_repeat" id="psw-repeat" required>
+              <hr>
+        
+              <button type="submit" class="registerbtn">Submit</button>
+            </div>
+            
+            <div class="container signin">
+              <p> <a href="#"></a>.</p>
+            </div>
+          </form>
+     </div>
+</body>
+</html>

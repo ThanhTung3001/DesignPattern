@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin/Promotion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/order">Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/category">Category </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/promotion">Promotion <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/Admin/products">Product</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <form th:action="@{/Admin/promotion/Add}" class="form-group" method="post">
+            <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" name="code" class="form-control" id="code"
+                     />
+            </div>
+            <div class="form-group">
+                <label for="code">End date</label>
+                <input type="date" name="end" class="form-control" id="end"
+                />
+            </div>
+                <div class="form-group">
+                    <label for="code">Value</label>
+                    <input type="number" name="value" class="form-control" id="value"
+                    />
+                </div>
+            <div class="form-group">
+                <label for="code">Amount</label>
+                <input type="number" name="amount" class="form-control" id="amount"
+                />
+            </div>
+               <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Code</th>
+                <th scope="col">Time Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Value</th>
+                <th scope="col">Amount</th>
+                <th scope="col" >Handle</th>
+
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="promotion, stat : ${Promotions}">
+                <td th:text="${stat.index+1}"></td>
+                <td th:text="${promotion.code}"></td>
+                <td th:text="${promotion.createDate}"></td>
+                <td th:text="${promotion.End}"></td>
+                <td th:text="${promotion.value}"></td>
+                <td th:text="${promotion.Amount}"></td>
+                <td >
+                    <a th:href="@{/Admin/Promotion/Delete/{id}(id=${promotion.id})}" class="btn btn-danger">Delete</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

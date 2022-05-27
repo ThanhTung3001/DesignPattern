@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">">
+  <link rel="stylesheet" th:href="@{/templateIs/style.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Register</title>
+
+</head>
+<body>
+<header>
+  <ul class="nav">
+    <li><a th:href="@{/home}">Home</a></li>
+    <li><a th:href="@{/user}">Account</a></li>
+    <li><a th:href="@{/cart}">Cart</a></li>
+    <li><a th:href="@{/login}">Login</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+  </ul>
+</header>
+<div class="content">
+  <form th:action="@{/register}" method="post">
+    <div class="container">
+      <h1>Register</h1>
+      <p>Please fill in this form.</p>
+      <hr>
+
+      <label for="email"><b>Full Name</b></label>
+      <input type="text" placeholder="Full Name" name="fullName" id="fullname" required>
+      <label for="email"><b>Address </b></label>
+      <input type="text" placeholder="Address" name="address" id="address" required>
+      <label for="email"><b>Phone Number</b></label>
+      <input type="text" placeholder="Phone Number" name="phoneNumber" id="phonenumber" required>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Email" name="email" id="email" required>
+      <label for="psw"><b>User</b></label>
+      <input type="text" placeholder="UserName" name="userName" id="psw" required>
+
+      <label for="psw-repeat"><b>PassWord</b></label>
+      <input type="password" placeholder="PassWord" name="passWord" id="psw-repeat" required>
+      <hr>
+
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <div class="container signin">
+      <p> <a href="#"></a>.</p>
+    </div>
+  </form>
+</div>
+</body>
+</html>
